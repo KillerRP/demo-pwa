@@ -15,7 +15,12 @@ const Home = () => {
             <p>Banner</p>
           </div>
           <div className="mb-3">
-            <button className="btn btn-success">Get Started</button>
+            <button
+              className="btn btn-success"
+              onClick={() => navigate(`demo-iframe`)}
+            >
+              Get Started
+            </button>
           </div>
           <div>
             <button
