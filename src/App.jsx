@@ -8,7 +8,7 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="demo-iframe/:url" element={<IframeView />} />
+        <Route path="demo-iframe" element={<IframeView />} />
         {/* <Route path="/" element={<Home />} /> */}
       </Routes>
     </>

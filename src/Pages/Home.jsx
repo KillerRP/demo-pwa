@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const [isSettingModal, setIsSettingModal] = useState(false);
+  const navigate = useNavigate();
   return (
     <>
-      <div className="w-100 bg-danger h-100 d-flex justify-content-center align-items-center">
+      <div className="w-100 bg-dark text-light h-100 d-flex justify-content-center align-items-center">
         <div>
           <div>
             <h1>Logo</h1>
@@ -12,22 +14,28 @@ const Home = () => {
           <div>
             <p>Banner</p>
           </div>
-          <div>
-            <button>Get Started</button>
+          <div className="mb-3">
+            <button className="btn btn-success">Get Started</button>
           </div>
           <div>
             <button
               type="button"
-              className="btn btn-primary"
+              className="btn btn-primary me-3"
               data-bs-toggle="modal"
               data-bs-target="#exampleModal"
+              onClick={(e) => setIsSettingModal(true)}
             >
               Setting
             </button>
-            <button>Help</button>
+            <button className="btn btn-primary">Help</button>
           </div>
         </div>
       </div>
+      {isSettingModal ? (
+        <div className="position-relative" style={{ top: 0, zIndex: 9999 }}>
+          Hello World
+        </div>
+      ) : null}
       {/* // Setting Modal */}
       {/* {isSettingModal ? ( */}
       <div
@@ -55,6 +63,8 @@ const Home = () => {
                 type="text"
                 placeholder="Enter url"
                 id="custom-url"
+                defaultValue="https://oceanwp.org/demos/"
+                disabled
                 required
               />
             </div>
@@ -72,12 +82,13 @@ const Home = () => {
                   e.preventDefault();
                   let url = document.getElementById("custom-url").value;
                   if (url) {
-                    console.log(url);
+                    navigate(`demo-iframe`);
                   } else {
                     console.log("Required !!!!");
                   }
                 }}
                 className="btn btn-primary"
+                data-bs-dismiss="modal"
               >
                 Save changes
               </button>
