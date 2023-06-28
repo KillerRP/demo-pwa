@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
 const IframeView = () => {
-  const params = useParams();
+  const [searchParams] = useSearchParams();
   const [customUrl, setCustomUrl] = useState("https://oceanwp.org/demos/");
   useEffect(() => {
-    if (params?.url) {
-      setCustomUrl(params.url);
+    if (searchParams && searchParams.get("url")) {
+      setCustomUrl(searchParams.get("url"));
     }
   }, []);
   return (

@@ -36,11 +36,11 @@ const Home = () => {
           </div>
         </div>
       </div>
-      {isSettingModal ? (
+      {/* {isSettingModal ? (
         <div className="position-relative" style={{ top: 0, zIndex: 9999 }}>
           Hello World
         </div>
-      ) : null}
+      ) : null} */}
       {/* // Setting Modal */}
       {/* {isSettingModal ? ( */}
       <div
@@ -69,7 +69,7 @@ const Home = () => {
                 placeholder="Enter url"
                 id="custom-url"
                 defaultValue="https://oceanwp.org/demos/"
-                disabled
+                // disabled
                 required
               />
             </div>
@@ -87,7 +87,7 @@ const Home = () => {
                   e.preventDefault();
                   let url = document.getElementById("custom-url").value;
                   if (url) {
-                    navigate(`demo-iframe`);
+                    navigate(`demo-iframe?url=${url}`);
                   } else {
                     console.log("Required !!!!");
                   }
