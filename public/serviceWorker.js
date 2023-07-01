@@ -1,7 +1,7 @@
-const CACHE_NAME = "version-1";
+const CACHE_NAME = "version-2";
 
-// const urlsToCache = ["/", "/index.html", "/manifest.json"]; // Add more URLs to cache as needed
-const urlsToCache = ["/", "/index.html", "/manifest.json"];
+const urlsToCache = ["/", "/index.html", "/manifest.json"]; // Add more URLs to cache as needed
+
 this.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
@@ -20,9 +20,3 @@ this.addEventListener("fetch", (event) => {
     })
   );
 });
-
-// this.addEventListener("activate", (event) => {
-//   const cacheWhiteList = [];
-//   cacheWhiteList.push(CACHE_NAME)
-//   event.waitUntil(caches.keys().then(cacheName) => Promise.all(cacheName))
-// });
