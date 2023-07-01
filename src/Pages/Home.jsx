@@ -40,7 +40,7 @@ const Home = () => {
                 className="get-started-btn btn text-light"
                 onClick={handleGetStarted}
               >
-                <span className="text-wrapper">GET STARTED [Updated]</span>
+                <span className="text-wrapper">GET STARTED </span>
                 <img
                   className="vector"
                   alt="Vector"
