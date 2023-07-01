@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      // Redirect to index.html with a custom redirect parameter
+      const redirectUrl = new URL(window.location.href);
+      redirectUrl.searchParams.set("redirect", window.location.pathname);
+      window.location.href = "index.html" + redirectUrl.search;
+    </script>
+  </head>
+  <body></body>
+</html>
