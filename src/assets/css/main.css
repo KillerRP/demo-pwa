@@ -1,0 +1,131 @@
+html, body, #root{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+img{
+    max-width: 100%;
+}
+body {
+    min-height: 100vh;
+    font-family: Barlow;
+    font-weight: 500;
+}
+input[type="text"]:focus-visible{
+    border: 2px solid lightgray !important;
+    outline: none;
+    padding: 5px;
+}
+.logo-container {
+    margin-top: -3%;
+}
+
+.banner-section img {
+    width: -webkit-fill-available;
+}
+
+.box {
+    margin-top: 65px;
+    justify-content: center;
+    display: flex;
+}
+
+.content {
+    height: calc(100% - 40px) !important;
+}
+
+.footer {
+    text-align: center;
+}
+
+.footer p {
+    font-family: "Barlow-Medium", Helvetica;
+    font-size: 12px;
+    font-weight: 500;
+
+    letter-spacing: 0;
+    line-height: 28px;
+    position: fixed;
+    white-space: nowrap;
+}
+
+.modal-dialog-bottomed {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(100%);
+}
+
+.modal.show .modal-dialog-bottomed {
+    transform: translateY(0);
+}
+
+.reset-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.font-12{
+    font-size: 12px;
+}
+.help-url-cnc {
+    max-height: 600px;
+    padding: 20px;
+}
+
+.help-url-cnc .modal-body {
+    overflow-y: auto;
+    max-height: 600px;
+}
+.place-items-center{
+    place-items: center;
+}
+.get-started-btn{
+     display: flex;
+     gap: 14px; 
+    border-radius: 4px;
+    background-color: #2E72A4;
+    box-shadow: 0px 2px 2px -1px rgba(74, 74, 104, 0.10) inset;
+    justify-content: center;
+    align-items: center;
+
+}
+.kite-btn{
+    background-color: #2E72A4;
+}
+.get-started-btn .text-wrapper{
+    color: #ffffff;
+    font-family: "Barlow-SemiBold", Helvetica;
+    font-size: 25px;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: 56px;
+    white-space: nowrap;
+}
+.setting-help-container button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    /* New style */
+    color: #232323;
+    /* font-size: 36px; */
+    font-family: Barlow;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 140%;
+}
+.setting-help-container button:hover{
+    background-color: lightgray;
+}
+.reset.cursot-pointer{
+    cursor: pointer;
+}
+
+@media (max-width: 335px) {
+    .get-started-btn{
+        font-size: 25px;
+    }
+}

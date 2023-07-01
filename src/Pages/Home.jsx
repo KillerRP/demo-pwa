@@ -1,107 +1,95 @@
 import React, { useState } from "react";
+import HelpModal from "../components/modals/HelpModal";
+import SettingModal from "../components/modals/SettingModal";
+import Footer from "../components/Footer";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import { showToast } from "../helpers/utils";
+import HeroImg from "../assets/images/hero-banner.png";
+import kitlogo from "../assets/images/kite-student-portal-logo.svg";
+import "react-toastify/dist/ReactToastify.css";
 
 const Home = () => {
-  const [isSettingModal, setIsSettingModal] = useState(false);
+  const [resetConfirmation, setResetConfirmation] = useState(false);
   const navigate = useNavigate();
+  const handleGetStarted = () => {
+    if (navigator.onLine) {
+      navigate("demo-iframe");
+    } else {
+      console.warn("No network connection!");
+      showToast("No network connection!", "error");
+    }
+  };
+
   return (
     <>
-      <div className="w-100 bg-dark text-light h-100 d-flex justify-content-center align-items-center">
+      <ToastContainer />
+      <div className="content w-100 text-light h-100">
         <div>
-          <div>
-            <h1>Logo</h1>
+          <div className="banner-section">
+            <img src={HeroImg} alt="Hero" height={200} />
           </div>
-          <div>
-            <p>Banner</p>
-          </div>
-          <div className="mb-3">
-            <button
-              className="btn btn-success"
-              onClick={() => navigate(`demo-iframe`)}
-            >
-              Get Started
-            </button>
-          </div>
-          <div>
-            <button
-              type="button"
-              className="btn btn-primary me-3"
-              data-bs-toggle="modal"
-              data-bs-target="#exampleModal"
-              onClick={(e) => setIsSettingModal(true)}
-            >
-              Setting
-            </button>
-            <button className="btn btn-primary">Help</button>
-          </div>
-        </div>
-      </div>
-      {/* {isSettingModal ? (
-        <div className="position-relative" style={{ top: 0, zIndex: 9999 }}>
-          Hello World
-        </div>
-      ) : null} */}
-      {/* // Setting Modal */}
-      {/* {isSettingModal ? ( */}
-      <div
-        className="modal fade"
-        id="exampleModal"
-        tabIndex={-1}
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
-        <div className="modal-dialog">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title" id="exampleModalLabel">
-                Modal title
-              </h5>
-              <button
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
+          <section className="d-grid place-items-center gap-5">
+            {/* Logo Container */}
+            <div>
+              <img src={kitlogo} alt="Kit Logo" width={250} />
             </div>
-            <div className="modal-body">
-              <input
-                type="text"
-                placeholder="Enter url"
-                id="custom-url"
-                defaultValue="https://oceanwp.org/demos/"
-                // disabled
-                required
-              />
-            </div>
-            <div className="modal-footer">
+            {/* Getting started button */}
+            <div>
               <button
-                type="button"
-                className="btn btn-secondary"
-                data-bs-dismiss="modal"
+                className="get-started-btn btn text-light"
+                onClick={handleGetStarted}
               >
-                Close
-              </button>
-              <button
-                type="button"
-                onClick={(e) => {
-                  e.preventDefault();
-                  let url = document.getElementById("custom-url").value;
-                  if (url) {
-                    navigate(`demo-iframe?url=${url}`);
-                  } else {
-                    console.log("Required !!!!");
-                  }
-                }}
-                className="btn btn-primary"
-                data-bs-dismiss="modal"
-              >
-                Save changes
+                <span className="text-wrapper">GET STARTED</span>
+                <img
+                  className="vector"
+                  alt="Vector"
+                  width={20}
+                  src="https://generation-sessions.s3.amazonaws.com/2a8424e45e6c92df757b39d0d7e26ee0/img/vector.svg"
+                />
               </button>
             </div>
-          </div>
+            {/* Setting and Help button */}
+            <div className="d-flex setting-help-container">
+              <button
+                type="button"
+                className="btn me-3"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal"
+                onClick={() => setResetConfirmation(false)}
+              >
+                <img
+                  src="https://generation-sessions.s3.amazonaws.com/2a8424e45e6c92df757b39d0d7e26ee0/img/group-1@2x.png"
+                  alt="setting"
+                  width={25}
+                />
+                <span>Setting</span>
+              </button>
+              <button
+                className="btn"
+                type="buttom"
+                data-bs-toggle="modal"
+                data-bs-target="#lab-slide-bottom-popup"
+              >
+                <img
+                  src="https://generation-sessions.s3.amazonaws.com/2a8424e45e6c92df757b39d0d7e26ee0/img/help-web-button-1.svg"
+                  alt="setting"
+                  width={25}
+                />
+                <span>Help</span>
+              </button>
+            </div>
+          </section>
         </div>
       </div>
-      {/* ) : null} */}
+      <Footer />
+
+      {/* Modals */}
+      <SettingModal
+        setResetConfirmation={setResetConfirmation}
+        resetConfirmation={resetConfirmation}
+      />
+      <HelpModal />
     </>
   );
 };

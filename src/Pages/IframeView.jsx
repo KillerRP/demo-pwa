@@ -1,22 +1,27 @@
 import React, { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { getUrl, showToast } from "../helpers/utils";
+import { defaultUrl } from "../helpers/constant";
 
 const IframeView = () => {
-  const [searchParams] = useSearchParams();
-  const [customUrl, setCustomUrl] = useState("https://oceanwp.org/demos/");
+  const [customUrl, setCustomUrl] = useState(getUrl());
+
   useEffect(() => {
-    if (searchParams && searchParams.get("url")) {
-      setCustomUrl(searchParams.get("url"));
+    if (!customUrl) {
+      setCustomUrl(defaultUrl);
     }
-  }, []);
+  }, [customUrl]);
   return (
     <>
       <iframe
         src={customUrl}
         width="100%"
         height="100%"
-        title="Example"
-      ></iframe>
+        title="Custom Url"
+        onErrorCapture={() => {
+          console.log("ERROR");
+          showToast("This url is not working", "error");
+        }}
+      />
     </>
   );
 };
