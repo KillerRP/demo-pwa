@@ -1,13 +1,7 @@
 const CACHE_NAME = "version-1";
 
 // const urlsToCache = ["/", "/index.html", "/manifest.json"]; // Add more URLs to cache as needed
-const urlsToCache = [
-  "/",
-  "/index.html",
-  "/manifest.json",
-  "/static/css/main.{build-hash}.css",
-  "/static/js/main.{build-hash}.js",
-];
+const urlsToCache = ["/", "/index.html", "/manifest.json"];
 this.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
